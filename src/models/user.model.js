@@ -1,14 +1,17 @@
 import { dbConfig } from '../config/db.config.js'
+import mongoose from 'mongoose' // <--- IMPORTANTE: Importa mongoose aquí
 
 export async function userModel() {
-  const connection = await dbConfig()
+  const connection = await dbConfig() // Esto asegura que estás conectado
 
-  const userSchema = new connection.Schema({
+  // USA mongoose.Schema en lugar de connection.Schema
+  const userSchema = new mongoose.Schema({
     nombre: String,
     apellido: String,
     email: String,
-    date: Date
+    date: { type: Date, default: Date.now }
   })
 
-  return connection.models.users||connection.model('users', userSchema, 'users')
+  // Usamos el objeto connection para verificar si el modelo ya existe
+  return connection.models.users || connection.model('users', userSchema, 'users')
 }

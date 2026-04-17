@@ -1,5 +1,5 @@
 // hecerme el index, este debe ser una api basica get con express con el puerto 3000, debes configurarla para que acepte json
-
+import 'dotenv/config' // <--- ESTA LÍNEA DEBE SER LA PRIMERA
 import express from 'express'
 import userRouter from './src/routes/user.routes.js'
 
