@@ -1,9 +1,8 @@
 import express from 'express'
-export const router = express.Router();
+import { userController } from '../controllers/user.controller.js'
 
+const router = express.Router();
 
-router.get('/perfil', (req,res)=>{
-    res.send("esta es la ruta perfil")
+export default router
 
-})
-
+router.post('/perfil', userController)
